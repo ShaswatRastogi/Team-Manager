@@ -1,16 +1,12 @@
-/* Full Page Reset */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f6f8;
 }
 
-/* Main App Layout */
 .app {
   display: flex;
 }
-
-/* Sidebar */
 
 .sidebar {
   width: 250px;
@@ -26,10 +22,9 @@ body {
 }
 
 .sidebar ul {
-  list-style:none;
+  list-style: none;
   padding: 0;
   color: grey
-  
 }
 
 .sidebar li {
@@ -47,8 +42,6 @@ body {
   color: #ccc;
 }
 
-/* Main Section */
-
 .main {
   flex: 1;
   padding: 30px;
@@ -57,8 +50,6 @@ body {
 .main h1 {
   margin-bottom: 20px;
 }
-
-/* Dashboard Cards */
 
 .cards {
   display: flex;
@@ -86,12 +77,10 @@ body {
   margin-top: 10px;
 }
 
-/* Table Section */
-
 .table-section {
   background: white;
   padding: 20px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
   border-radius: 12px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -114,8 +103,6 @@ td {
 th {
   font-weight: bold;
 }
-
-/* Login Page */
 
 
 .login-page {
@@ -165,14 +152,14 @@ th {
   font-size: 16px;
 }
 
-.login-box select{
- width:150px;
- padding:20px 10px;
- background:rgb(185, 185, 199);
- border-radius:10px;
- border:0;
- cursor:pointer;
- box-sizing:border-box;
+.login-box select {
+  width: 150px;
+  padding: 20px 10px;
+  background: rgb(185, 185, 199);
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .table-section input {
@@ -194,27 +181,29 @@ th {
   cursor: pointer;
 }
 
-.table-section select{
-  padding :10px 10px;
-  margin-right:20px;
-  margin-top:10px;
-  border-radius:10px;
+.table-section select {
+  padding: 10px 10px;
+  margin-right: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
 }
-/* Error Message */
-.logout{
-  display:flex;
-  flex-direction:space-between;
-    align-items: center;
+
+.logout {
+  display: flex;
+  flex-direction: space-between;
+  align-items: center;
 }
-.logout button{
-  margin-left:40px;
-  padding:5px;
-  border-radius:50px;
-  color:rgb(255, 255, 255);
-  border-color:red;
-  background:red;
+
+.logout button {
+  margin-left: 40px;
+  padding: 5px;
+  border-radius: 50px;
+  color: rgb(255, 255, 255);
+  border-color: red;
+  background: red;
   cursor: pointer;
 }
+
 .error {
   color: red;
   font-size: 14px;
