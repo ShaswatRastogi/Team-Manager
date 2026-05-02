@@ -10,12 +10,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-conn = psycopg2.connect(
-    host=os.getenv("DB_HOST", "localhost"),
-    database=os.getenv("DB_NAME", "Ethara"),
-    user=os.getenv("DB_USER", "postgres"),
-    password=os.getenv("DB_PASSWORD", "")
-)
+db_url = os.getenv("DATABASE_URL")
+
+if db_url:
+    conn = psycopg2.connect(db_url)
+else:
+    conn = psycopg2.connect(
+        host=os.getenv("DB_HOST", os.getenv("PGHOST", "localhost")),
+        database=os.getenv("DB_NAME", os.getenv("PGDATABASE", "Ethara")),
+        user=os.getenv("DB_USER", os.getenv("PGUSER", "postgres")),
+        password=os.getenv("DB_PASSWORD", os.getenv("PGPASSWORD", "")),
+        port=os.getenv("DB_PORT", os.getenv("PGPORT", "5432"))
+    )
 
 cursor = conn.cursor()
 
