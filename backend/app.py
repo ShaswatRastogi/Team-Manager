@@ -13,7 +13,9 @@ load_dotenv()
 db_url = os.getenv("DATABASE_URL")
 
 if db_url:
+    print("Connecting to database using DATABASE_URL...")
     conn = psycopg2.connect(db_url)
+    print("Database connected successfully!")
 else:
     conn = psycopg2.connect(
         host=os.getenv("DB_HOST", os.getenv("PGHOST", "localhost")),
