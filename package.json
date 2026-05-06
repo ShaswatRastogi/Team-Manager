@@ -1,0 +1,7 @@
+{
+  "name": "team-manager-monolith",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend && pip install -r backend/requirements.txt"
+  }
+}
