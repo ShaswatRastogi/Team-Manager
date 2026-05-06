@@ -49,7 +49,7 @@ useEffect(() => {
 }, []);
 const fetchProjects = async () => {
   try {
-    const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+    const API_URL = process.env.REACT_APP_API_URL || (window.location.hostname === "localhost" ? "http://127.0.0.1:5000" : "https://team-manager-production-5735.up.railway.app");
     const response = await fetch(`${API_URL}/get-projects`);
 
     const data = await response.json();
@@ -78,7 +78,7 @@ const fetchTasks = async () => {
 
     console.log("EMAIL SENT:", email, "ROLE:", role);
 
-    const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+    const API_URL = process.env.REACT_APP_API_URL || (window.location.hostname === "localhost" ? "http://127.0.0.1:5000" : "https://team-manager-production-5735.up.railway.app");
     const response = await fetch(
       `${API_URL}/get-tasks?email=${email}&role=${role}`
     );
@@ -109,7 +109,7 @@ const handleAuth = async (type) => {
   }
 
   try {
-    const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+    const API_URL = process.env.REACT_APP_API_URL || (window.location.hostname === "localhost" ? "http://127.0.0.1:5000" : "https://team-manager-production-5735.up.railway.app");
     const response = await fetch(
       `${API_URL}/${type}`,
       {
@@ -176,7 +176,7 @@ const handleCreateProject = async () => {
   }
 
   try {
-    const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+    const API_URL = process.env.REACT_APP_API_URL || (window.location.hostname === "localhost" ? "http://127.0.0.1:5000" : "https://team-manager-production-5735.up.railway.app");
     const response = await fetch(
       `${API_URL}/create-project`,
       {
@@ -221,7 +221,7 @@ const handleCreateTask = async () => {
   }
 
   try {
-    const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+    const API_URL = process.env.REACT_APP_API_URL || (window.location.hostname === "localhost" ? "http://127.0.0.1:5000" : "https://team-manager-production-5735.up.railway.app");
     const response = await fetch(
       `${API_URL}/create-task`,
       {
@@ -254,7 +254,7 @@ const handleCreateTask = async () => {
 };
 const handleDeleteTask = async (id) => {
   try {
-    const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+    const API_URL = process.env.REACT_APP_API_URL || (window.location.hostname === "localhost" ? "http://127.0.0.1:5000" : "https://team-manager-production-5735.up.railway.app");
     const response = await fetch(
       `${API_URL}/delete-task/${id}`,
       {
