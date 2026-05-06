@@ -1,0 +1,2 @@
+# Root requirements file to help Nixpacks detect the project
+-r backend/requirements.txt
