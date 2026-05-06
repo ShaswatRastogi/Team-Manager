@@ -2,18 +2,21 @@
 builder = "NIXPACKS"
 
 [build.nixpacks]
-providers = ["node", "python"]
+providers = ["python"]
 
 [build.nixpacks.phases.setup]
-nixPkgs = ["python3", "nodejs_20"]
+nixPkgs = ["python311", "nodejs_20", "gcc"]
 
 [build.nixpacks.phases.install]
-dependsOn = ["setup"]
-cmds = ["npm install --prefix frontend", "pip install -r backend/requirements.txt"]
+cmds = [
+    "pip install -r backend/requirements.txt",
+    "npm install --prefix frontend"
+]
 
 [build.nixpacks.phases.build]
-dependsOn = ["install"]
-cmds = ["npm run build --prefix frontend"]
+cmds = [
+    "npm run build --prefix frontend"
+]
 
 [deploy]
 startCommand = "cd backend && gunicorn app:app --bind 0.0.0.0:$PORT"
