@@ -1,11 +1,14 @@
 [build]
 builder = "NIXPACKS"
 
+[build.nixpacks]
+providers = ["node", "python"]
+
 [build.nixpacks.phases.setup]
 nixPkgs = ["python311", "nodejs_20", "gcc"]
 
 [build.nixpacks.phases.install]
-cmds = ["pip install -r backend/requirements.txt", "npm install --prefix frontend"]
+cmds = ["npm install --prefix frontend", "pip install -r backend/requirements.txt"]
 
 [build.nixpacks.phases.build]
 cmds = ["npm run build --prefix frontend"]
