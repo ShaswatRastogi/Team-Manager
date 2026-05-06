@@ -1,35 +1,28 @@
-# Stage 1: Build Frontend
+# Final Robust Dockerfile for Monolith
 FROM node:20-slim AS frontend-builder
-WORKDIR /app/frontend
-COPY frontend/package*.json ./
-RUN npm install
-COPY frontend/ ./
-RUN npm run build
+WORKDIR /app
+COPY frontend/package*.json ./frontend/
+RUN npm install --prefix frontend
+COPY frontend/ ./frontend/
+RUN npm run build --prefix frontend
 
-# Stage 2: Final Image
 FROM python:3.11-slim
 WORKDIR /app
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend
 COPY backend/requirements.txt ./backend/
 RUN pip install --no-cache-dir -r backend/requirements.txt
 
-# Copy built frontend from Stage 1
 COPY --from=frontend-builder /app/frontend/build ./frontend/build
-
-# Copy backend source
 COPY backend/ ./backend/
 
-# Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8080
 
-# Start command
+# The app is served from the backend directory
 WORKDIR /app/backend
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8080"]
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8080", "--workers", "2", "--timeout", "120"]
